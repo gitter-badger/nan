@@ -38,8 +38,7 @@ Thumbs.db
 
 # nan #
 #######
-motmController.js
-lb-services.js
+init.js
 *.jpg
 *.mp4
 *google*.html

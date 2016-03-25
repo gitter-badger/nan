@@ -15,8 +15,8 @@
 */
 
 /* global angular */
-/* global jwplayer */
-/* global STRAXVERSION */
+/* global jwplayer playerInstance*/
+/* global STRAXVERSION videoPath*/
 
 var nanController = angular.module('nanController', []);
 
