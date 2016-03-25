@@ -1,0 +1,162 @@
+<div class="jumbotron">
+    <div class="jumbotron-contents">
+        <h1>Neu auf Netflix Deutschland <span class="badge badge-danger">{{ filter.issue }}</span></h1>
+    </div>
+</div>
+
+<div class="collapse" id="videoCollapse">
+    <div class="well">
+        <button type="button" class="btn btn-default btn-block" id="btnHideVideo1">Video ausblenden</button>
+        <div id="myVideoPlayer">Loading the player...If the player does not load, please refresh the page.</div>
+        <button type="button" class="btn btn-default btn-block" id="btnHideVideo2">Video ausblenden</button>
+    </div>
+</div>
+
+<div class="alert alert-danger" ng-if="error">
+    <h4>Oh snap! Better call the Doctor, an Error occured</h4>
+    <p> {{ error }}</p>
+</div>
+
+<div class="row">
+    <div class="col-md-9">
+        <div ng-repeat="item in filteredNaNitems = (nanItems | filter: filter | orderBy:predicate:reverse)">
+            <div class="clearfix" ng-if="$index % 4 == 0"></div>
+
+            <div class="col-md-3">
+
+                <div class="thumbnail">
+                    <img class="img-rounded" ng-src="{{ item.image }}" alt="{{ item.title }}">
+                    <div class="caption text-center">
+                        <h3>{{ item.title }} <span class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="Staffel" tooltip>{{ item.season }}</span></h3>
+                        <p>
+                            <span class="label label-success" data-toggle="tooltip" data-placement="top" title="Voraussichtliches Veröffentlichungsdatum" tooltip>{{ item.releasedate | date:'d.M.yyyy'}}</span> <span class="label label-default" data-toggle="tooltip"
+                            data-placement="top" title="Newsletter Ausgabe" tooltip>{{ item.issue }}</span>
+                        </p>
+                        <p>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                                <a type="button" class="btn btn-default" ng-href="https://de.wikipedia.org/wiki/Spezial:Suche/{{ item.title }}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Wikipedia" tooltip>
+                                    <i class="fa fa-wikipedia-w"></i>
+                                </a>
+                                <a type="button" class="btn btn-default" ng-if="item.nflxOriginal" ng-href="https://media.netflix.com/de/search?term={{ item.title }}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Netflix Medien Center" tooltip>
+                                    <i class="fa fa-info"></i>
+                                </a>
+                                <a href="" type="button" class="btn btn-default" ng-if="item.video" scroll-to="videoCollapse" ng-click="gotoVideo(item.video, item.issue)" data-toggle="tooltip" data-placement="bottom" title="Trailer" tooltip>
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="alert alert-warning" ng-if="!filteredNaNitems.length && init">
+            <strong>Oh Oh! Keine Ergebnisse.</strong> Sind die Filtereinstellungen etwas zu strikt eingestellt?
+        </div>
+        <div class="alert alert-info" ng-if="!init">
+            <strong>Loading... <i class="fa fa-spinner fa-pulse"></i></strong> you see me loadin', you hatin'
+        </div>
+
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-exclamation"></i> Wichtig!</h3>
+            </div>
+            <div class="panel-body">
+                <p><i>Alle Veröffentlichungsdaten sind ohne Gewähr und können sich ändern.</i></p>
+                <p><strong>Quelle:</strong> Netflix Presseagentur Deutschland, Österreich & Schweiz</p>
+                <p><strong>Trailer:</strong> Netflix Youtube Channels</p>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-filter"></i> Filter & Suche</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="selectIssue">Ausgabe</label>
+                        <select class="form-control" ng-model="filter.issue" ng-init="filter.issue = thisIssue">
+                            <option selected value=''></option>
+                            <option>März 2016</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterTitle">Titel</label>
+                        <input type="text" class="form-control" id="filterTitle" placeholder="Filter nach Titel" ng-model="filter.title">
+                    </div>
+                    <div class="form-group">
+                        <label for="selectCate">Kategorie</label>
+                        <select class="form-control" ng-model="filter.type">
+                            <option></option>
+                            <option>TV Show</option>
+                            <option>Movie</option>
+                            <option>Dokumentation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="selectHasTrailer">Trailer</label>
+                        <select class="form-control" ng-model="fHasTrailer" ng-change="filter.video = filterByHasTrailer(fHasTrailer)">
+                            <option value='0' selected>Alle zeigen</option>
+                            <option value='1'>Mit Trailer</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-play"></i> Neue Trailer</h3>
+            </div>
+            <div class="panel-body" ng-init="filter2.video = ''">
+                <div class="list-group">
+                    <a class="list-group-item" ng-repeat="item in filteredNaNitems = (nanItems | filter: filter2 | orderBy: item.updatedOn: 1)" href="" ng-if="item.video" scroll-to="videoCollapse" ng-click="gotoVideo(item.video, item.issue)" data-toggle="tooltip" data-placement="bottom"
+                    title="Trailer anschauen" tooltip><i class="fa fa-youtube-play"></i> {{ item.title }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info" ng-controller="motmController">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-envelope"></i> MotM</h3>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-warning" ng-bind-html="motm.text">
+
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="" scroll-to="videoCollapse" ng-click="gotoVideo('Doctor Who  Strax is Best Newspaper Delivery Service Ever!!.mp4', 'general')"><span class="label label-info">Strax: <span class="label label-danger">{{ straxVersion }}</span></span></a>
+        </div>
+        <br>
+    </div>
+</div>
+
+<script src="js/jwplayer/jwplayer.js"></script>
+<script>
+    jwplayer.key = "9l4D28pd9vUR9Z5BCYh23d4YpgUMvsb1pJWEtw==";
+</script>
+
+<script type="text/javascript">
+    var playerInstance = jwplayer("myVideoPlayer");
+    playerInstance.setup({
+        file: "/media/video/general/Doctor Who  Strax is Best Newspaper Delivery Service Ever!!.mp4",
+        autostart: false,
+        allowfullscreen: true,
+        width: "100%",
+        aspectratio: "16:9",
+        events: {
+            onComplete: function() {
+                $(".collapse").collapse('hide');
+            },
+            onPause: function() {
+
+            },
+            onStop: function() {
+
+            }
+        }
+    });
+</script>

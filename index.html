@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="nan">
+
+<head>
+  <meta charset="utf-8">
+  <title> Neu auf Netflix </title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- bootflat -->
+  <link rel="stylesheet" href="https://bootflat.github.io/bootflat/css/bootflat.css">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+    window.cookieconsent_options = {
+      "message": "Diese Webseite nutzt Cookies um sicherzustellen, dass du das beste Erlebnis erhältst",
+      "dismiss": "Alles klar!",
+      "learnMore": "Weitere Infos",
+      "link": "https://nan.papstgrabmaeler.de/#/datenschutzbestimmungen",
+      "theme": "dark-floating"
+    };
+  </script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+  <!-- End Cookie Consent plugin -->
+
+  <!-- jquery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+  <!-- backendless -->
+  <script type="text/javascript" src="https://api.backendless.com/sdk/js/latest/backendless.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- bootflat -->
+  <script src="https://bootflat.github.io/bootflat/js/jquery.fs.selecter.min.js"></script>
+  <script src="https://bootflat.github.io/bootflat/js/jquery.fs.stepper.min.js"></script>
+
+  <!-- Angular -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>
+  <script type="text/javascript" src="https://code.angularjs.org/1.5.0-rc.2/angular-route.min.js"></script>
+  <script type="text/javascript" src="https://code.angularjs.org/1.5.0-rc.2/angular-resource.min.js"></script>
+  <script type="text/javascript" src="https://code.angularjs.org/1.5.0/angular-sanitize.min.js"></script>
+  <script type="text/javascript" src="https://code.angularjs.org/1.5.2/angular-animate.min.js"></script>
+  <script type="text/javascript" src="https://code.angularjs.org/1.5.2/angular-touch.min.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.4/angularfire.min.js"></script>
+  
+  <!-- Angular App -->
+  <script type="text/javascript">var STRAXVERSION = '1.2.1'; var videoPath = '/media/video/';</script>
+  <script type="text/javascript" src="app/services/lb-services.js"></script>
+  <script type="text/javascript" src="app/controllers/nanController.js"></script>
+  <script type="text/javascript" src="app/controllers/addtitleController.js"></script>
+  <script type="text/javascript" src="app/controllers/motmController.js"></script>
+  <script type="text/javascript" src="app/controllers/app.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div ng-view>
+      <p class="text-center"><i class="fa fa-spinner fa-pulse fa-5x"></i></p>
+    </div>
+  </div>
+
+<div footer></div>
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<div class="jumbotron">
+    <div class="jumbotron-contents">
+        <h1>Add a New Title</h1>
+    </div>
+</div>
+
+<div class="well" ng-if="!loggedIn">
+    <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="text" class="form-control" id="loginEmail" placeholder="Email" ng-model="loginEmail">
+    </div>
+    <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" class="form-control" id="loginPassword" placeholder="Password" ng-model="loginPassword">
+    </div>
+    <button type="button" class="btn btn-primary" ng-click="doLogin(loginEmail, loginPassword)">Login</button>
+</div>
+
+<div ng-if="loggedIn">
+    <div class="well">
+
+        <div class="form-group">
+            <label for="newIssue">Issue</label>
+            <input type="text" class="form-control" id="newIssue" placeholder="Issue" ng-model="$parent.newIssue" ng-init="$parent.newIssue = 'März 2016'">
+        </div>
+
+        <div class="form-group">
+            <label for="newTitle">Title</label>
+            <input type="text" class="form-control" id="newTitle" placeholder="Title" ng-model="$parent.newTitle">
+        </div>
+
+        <div class="form-group">
+            <label for="newSeason">Season</label>
+            <input type="number" class="form-control" id="newSeason" placeholder="Season" ng-model="$parent.newSeason">
+        </div>
+
+        <div class="form-group">
+            <label for="newCategory">Category</label>
+            <input type="text" class="form-control" id="newCategory" placeholder="Category" value="Neu auf Netflix" ng-model="$parent.newCategory" ng-init="newCategory = 'Neu auf Netflix'" disabled>
+        </div>
+
+        <div class="form-group">
+            <label for="newImageURL">Image URL</label>
+            <input type="text" class="form-control" id="newImageURL" placeholder="Image URL" ng-model="$parent.newImage">
+        </div>
+
+        <div class="form-group">
+            <label for="newVideo">Video Title</label>
+            <input type="text" class="form-control" id="newVideo" placeholder="Video Title" ng-model="$parent.newVideo">
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <label for="newReleasedate">Releasedate</label>
+                <input type="text" class="form-control" id="newReleasedate" uib-datepicker-popup="{{format}}" ng-model="$parent.dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+            </div>
+        </div>
+
+        <label for="newType2">Type</label>
+        <select class="form-control" id="newType2" ng-model="$parent.newType">
+            <option value="TV Show">TV Show</option>
+            <option value="Movie">Movie</option>
+            <option value="Dokumentation">Dokumentation</option>
+        </select>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="$parent.newOriginal"> Netflix Original
+            </label>
+        </div>
+
+        <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+    </div>
+
+    <div class="alert alert-danger" ng-if="error">
+        <h4>Oh snap! Better call the Doctor, an Error occured</h4>
+        <p> {{ error }}</p>
+    </div>
+    <div class="alert alert-info" ng-if="success">
+        <h4>Success! The Doctor has landed</h4>
+        <p> {{ success }}</p>
+    </div>
+</div>
+<br>
