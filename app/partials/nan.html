@@ -66,8 +66,7 @@
             </div>
             <div class="panel-body">
                 <p><i>Alle Veröffentlichungsdaten sind ohne Gewähr und können sich ändern.</i></p>
-                <p><strong>Quelle:</strong> Netflix Presseagentur Deutschland, Österreich & Schweiz</p>
-                <p><strong>Trailer:</strong> Netflix Youtube Channels</p>
+                <p><small><strong>Quelle:</strong> Netflix Presseagentur Deutschland, Österreich & Schweiz</small></p>
             </div>
         </div>
         <div class="panel panel-primary">
@@ -123,6 +122,7 @@
                     <a class="list-group-item" ng-repeat="item in filteredNaNitems = (nanItems | filter: filter2 | orderBy: item.updatedOn: 1)" href="" ng-if="item.video" scroll-to="videoCollapse" ng-click="gotoVideo(item.video, item.issue)" data-toggle="tooltip" data-placement="bottom"
                     title="Trailer anschauen" tooltip><i class="fa fa-youtube-play"></i> {{ item.title }}</a>
                 </div>
+                <p><small><strong>Quelle:</strong> Netflix Youtube Channels</small></p>
             </div>
         </div>
         <div class="panel panel-info" ng-controller="motmController">
