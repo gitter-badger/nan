@@ -56,10 +56,48 @@ nanController.controller("nanController", function($scope, $location, $anchorScr
 
     // setup sorting if items
     $scope.predicate = 'title';
+    $scope.btnclTitle = 'active';
     $scope.reverse = false;
+    $scope.btnTitleIco = 'fa fa-sort-asc';
     $scope.order = function(predicate) {
         $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
         $scope.predicate = predicate;
+        $scope.btnclTitle = '';
+    };
+    
+    $scope.setSortClass = function(button) {
+        switch(button) {
+            case 'title':
+                $scope.btnclTitle = 'active';
+                $scope.btnclRdate = '';
+                switch($scope.reverse) {
+                    case true:
+                        $scope.btnTitleIco = 'fa fa-sort-desc';
+                        $scope.btnRdateIco = '';
+                        break;
+                    case false:
+                        $scope.btnTitleIco = 'fa fa-sort-asc';
+                        $scope.btnRdateIco = '';
+                        break;
+                }
+                break;
+            case 'orderByDate':
+                $scope.btnclRdate = 'active';
+                $scope.btnclTitle = '';
+                
+                
+                switch($scope.reverse) {
+                    case true:
+                        $scope.btnTitleIco = '';
+                        $scope.btnRdateIco = 'fa fa-sort-desc';
+                        break;
+                    case false:
+                        $scope.btnTitleIco = '';
+                        $scope.btnRdateIco = 'fa fa-sort-asc';
+                        break;
+                }
+                break;
+        }
     };
 
     // set filter to show titles with trailers
@@ -71,6 +109,15 @@ nanController.controller("nanController", function($scope, $location, $anchorScr
         else {
             return undefined;
         }
+    };
+    
+    $scope.orderByDate = function(item) {
+        var parts = item.releasedate.split('-');
+        var date = new Date(parseInt(parts[2]), 
+                            parseInt(parts[1]), 
+                            parseInt(parts[0]));
+    
+        return date;
     };
 
     function getItems() {
@@ -85,4 +132,3 @@ nanController.controller("nanController", function($scope, $location, $anchorScr
     getItems();
 
 });
-

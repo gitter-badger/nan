@@ -29,7 +29,7 @@
                     <div class="caption text-center">
                         <h3>{{ item.title }} <span class="badge badge-warning" data-toggle="tooltip" data-placement="top" title="Staffel" tooltip>{{ item.season }}</span></h3>
                         <p>
-                            <span class="label label-success" data-toggle="tooltip" data-placement="top" title="Voraussichtliches Veröffentlichungsdatum" tooltip>{{ item.releasedate | date:'d.M.yyyy'}}</span> <span class="label label-default" data-toggle="tooltip"
+                            <span class="label label-success" data-toggle="tooltip" data-placement="top" title="Voraussichtliches Veröffentlichungsdatum" tooltip>{{ item.releasedate | date:'d.M.yyyy' }}</span> <span class="label label-default" data-toggle="tooltip"
                             data-placement="top" title="Newsletter Ausgabe" tooltip>{{ item.issue }}</span>
                         </p>
                         <p>
@@ -70,11 +70,27 @@
                 <p><strong>Trailer:</strong> Netflix Youtube Channels</p>
             </div>
         </div>
+        
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-filter"></i> Filter & Suche</h3>
+                <h3 class="panel-title"><i class="fa fa-sort"></i> Sortieren</h3>
             </div>
             <div class="panel-body">
+
+            </div>
+        </div>
+        
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-filter"></i> Filter & Sortieren</h3>
+            </div>
+            <div class="panel-body">
+                <label for="sortingoptions">Sortieren</label>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-xs btn-default" ng-class="btnclTitle" ng-click="order('title'); setSortClass('title')"><i class="" ng-class="btnTitleIco"></i> Titel</button>
+                    <button type="button" class="btn btn-xs btn-default" ng-class="btnclRdate" ng-click="order(orderByDate); setSortClass('orderByDate')"><i class="" ng-class="btnRdateIco"></i> Veröffentlichungsdatum</button>
+                </div>
+                
                 <form>
                     <div class="form-group">
                         <label for="selectIssue">Ausgabe</label>
