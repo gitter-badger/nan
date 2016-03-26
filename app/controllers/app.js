@@ -19,18 +19,6 @@
 // init
 var scrolling = false;
 
-function NaNtitle(args) {
-    args = args || {};
-    this.title = args.title || "";
-    this.category = args.category || "Neu auf Netflix";
-    this.type = args.type || "";
-    this.season = args.season || "";
-    this.releasedate = args.releasedate || "";
-    this.text = args.text || "";
-    this.image = args.image || "";
-    this.issue = args.issue || "";
-}
-
 var nan = angular.module("nan", ['ngRoute', 'firebase', 'ngSanitize', 'lbServices', 'ui.bootstrap', 'ngAnimate', 'nanController', 'motmController', 'addtitleController']);
 
 nan.config(function($routeProvider, $httpProvider) {
