@@ -83,29 +83,29 @@
                 </div>
                 <hr>
                 <form>
-                    <div class="form-group">
+                    <div class="form-group form-group-sm">
                         <label for="selectIssue">Ausgabe</label>
-                        <select class="form-control input-sm" ng-model="filter.issue" ng-init="filter.issue = thisIssue">
+                        <select class="form-control" ng-model="filter.issue" ng-init="filter.issue = thisIssue">
                             <option selected value=''></option>
                             <option>März 2016</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-sm">
                         <label for="filterTitle">Titel</label>
-                        <input type="text" class="form-control input-sm" id="filterTitle" placeholder="Filter nach Titel" ng-model="filter.title">
+                        <input type="text" class="form-control" id="filterTitle" placeholder="Filter nach Titel" ng-model="filter.title">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-sm">
                         <label for="selectCate">Kategorie</label>
-                        <select class="form-control input-sm" ng-model="filter.type">
+                        <select class="form-control" ng-model="filter.type">
                             <option></option>
                             <option>TV Show</option>
                             <option>Movie</option>
                             <option>Dokumentation</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-sm">
                         <label for="selectHasTrailer">Trailer</label>
-                        <select class="form-control input-sm" ng-model="fHasTrailer" ng-change="filter.video = filterByHasTrailer(fHasTrailer)">
+                        <select class="form-control" ng-model="fHasTrailer" ng-change="filter.video = filterByHasTrailer(fHasTrailer)">
                             <option value='0' selected>Alle zeigen</option>
                             <option value='1'>Mit Trailer</option>
                         </select>
