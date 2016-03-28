@@ -97,6 +97,24 @@ nanController.controller("nanController", function($scope, $location, $anchorScr
                 break;
         }
     };
+    
+    // check if filter is set and then change css class
+    $scope.checkThisActiveFilter = function(filter) {
+        if(filter==undefined || filter=='' || filter==0) {
+            return '';
+        } else {
+            return 'has-error has-feedback';
+        }
+    };
+    
+    // check if filters are set and then display alert if the answer is true
+    $scope.checkAllActiveFilters = function(issue, title, type, video) {
+        if((issue || title || type || ( video!=undefined && video!=0 ))) {
+            return true;
+        } else {
+            return false;
+        }
+    };
 
     // set filter to show titles with trailers
     $scope.filterByHasTrailer = function(videoName) {
@@ -131,5 +149,4 @@ nanController.controller("nanController", function($scope, $location, $anchorScr
         );
     }
     getItems();
-
 });
