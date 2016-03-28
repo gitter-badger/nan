@@ -120,7 +120,7 @@
             <div class="panel-body" ng-init="filter2.video = ''">
                 <div class="list-group">
                     <a class="list-group-item" ng-repeat="item in filteredNaNitems = (nanItems | filter: filter2 | orderBy: item.updatedOn: 1)" href="" ng-if="item.video" scroll-to="videoCollapse" ng-click="gotoVideo(item.video, item.issue)" data-toggle="tooltip" data-placement="bottom"
-                    title="Trailer anschauen" tooltip><i class="fa fa-youtube-play"></i> {{ item.title }}</a>
+                    title="Trailer anschauen" tooltip><i class="fa fa-youtube-play"></i><span class="badge"><small data-toggle="tooltip" data-placement="top" title="Voraussichtliches Veröffentlichungsdatum" tooltip>{{ item.releasedate | date:'d.M.yyyy' }}</span> {{ item.title }}</small></a>
                 </div>
                 <p><small><strong>Quelle:</strong> Netflix Youtube Channels</small></p>
             </div>
