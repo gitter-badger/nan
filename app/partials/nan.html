@@ -22,7 +22,7 @@
         <div ng-repeat="item in filteredNaNitems = (nanItems | filter: filter | orderBy:predicate:reverse)">
             <div class="clearfix" ng-if="$index % 4 == 0"></div>
 
-            <div class="col-md-3">
+            <div class="col-sm-3">
 
                 <div class="thumbnail">
                     <img class="img-rounded" ng-src="{{ item.image }}" alt="{{ item.title }}">
