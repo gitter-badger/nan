@@ -15,11 +15,12 @@
 */
 
 /* global angular */
+/* global STRAXVERSION */
 
 // init
 var scrolling = false;
 
-var nan = angular.module("nan", ['ngRoute', 'firebase', 'ngSanitize', 'lbServices', 'ui.bootstrap', 'ngAnimate', 'nanController', 'motmController', 'addtitleController']);
+var nan = angular.module("nan", ['ngRoute', 'firebase', 'ngSanitize', 'lbServices', 'ui.bootstrap', 'ngAnimate', 'nanController', 'motmController', 'addtitleController', 'footerController']);
 
 nan.config(function($routeProvider, $httpProvider) {
     $routeProvider
@@ -100,6 +101,14 @@ nan.directive('tooltip', function() {
 
 nan.directive('footer', function() {
   return {
-    templateUrl: 'app/partials/directives/footer.html'
+    templateUrl: 'app/partials/directives/footer.html', 
+    controller: 'footerController'
   };
+});
+
+// footer controller
+var footerController = angular.module('footerController', []);
+
+footerController.controller("footerController", function($scope) {
+    $scope.straxVersion = 'v' + STRAXVERSION;
 });
