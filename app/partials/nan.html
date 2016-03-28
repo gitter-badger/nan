@@ -62,11 +62,10 @@
     <div class="col-md-3">
         <div class="panel panel-danger">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-exclamation"></i> Wichtig!</h3>
+                <h3 class="panel-title"><i class="fa fa-exclamation"></i> Wichtig! <i class="fa fa-info-circle pull-right" data-toggle="tooltip" data-placement="top" title="Quelle: Netflix Presseagentur Deutschland, Österreich & Schweiz" tooltip></i></h3>
             </div>
             <div class="panel-body">
                 <p><i>Alle Veröffentlichungsdaten sind ohne Gewähr und können sich ändern.</i></p>
-                <p><small><strong>Quelle:</strong> Netflix Presseagentur Deutschland, Österreich & Schweiz</small></p>
             </div>
         </div>
         <div class="panel panel-primary">
@@ -115,14 +114,13 @@
         </div>
         <div class="panel panel-warning">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-play"></i> Neue Trailer</h3>
+                <h3 class="panel-title"><i class="fa fa-play"></i> Neue Trailer <i class="fa fa-info-circle pull-right" data-toggle="tooltip" data-placement="top" title="Quelle: Netflix Youtube Channels" tooltip></i></h3>
             </div>
             <div class="panel-body" ng-init="filter2.video = ''">
                 <div class="list-group">
                     <a class="list-group-item" ng-repeat="item in filteredNaNitems = (nanItems | filter: filter2 | orderBy: item.updatedOn: 1)" href="" ng-if="item.video" scroll-to="videoCollapse" ng-click="gotoVideo(item.video, item.issue)" data-toggle="tooltip" data-placement="bottom"
                     title="Trailer anschauen" tooltip><i class="fa fa-youtube-play"></i><span class="badge"><small data-toggle="tooltip" data-placement="top" title="Voraussichtliches Veröffentlichungsdatum" tooltip>{{ item.releasedate | date:'d.M.yyyy' }}</span> {{ item.title }}</small></a>
                 </div>
-                <p><small><strong>Quelle:</strong> Netflix Youtube Channels</small></p>
             </div>
         </div>
         <div class="panel panel-info" ng-controller="motmController">
