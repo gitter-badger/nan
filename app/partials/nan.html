@@ -19,7 +19,7 @@
 
 <div class="row">
     <div class="col-md-9">
-        <div ng-if="checkAllActiveFilters(filter.issue, filter.title, filter.type, fHasTrailer)" class="alert alert-success" role="alert"><strong>Filter ist aktiv!</strong> Es werden möglicherweise nicht alle Inahlte angezeigt.</div>
+        <div ng-if="checkAllActiveFilters(filter.issue, filter.title, filter.type, fHasTrailer)" class="alert alert-success" role="alert"><strong>Filter ist aktiv!</strong> Es werden möglicherweise nicht alle Inhalte angezeigt.</div>
         <div ng-repeat="item in filteredNaNitems = (nanItems | filter: filter | orderBy:predicate:reverse)">
             <div class="clearfix" ng-if="$index % 4 == 0"></div>
 
